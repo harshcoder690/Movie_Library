@@ -1,0 +1,70 @@
+@import url("http://fonts.cdnfonts.com/css/sofia-pro");
+.main {
+    background-image: url('../assets/loginimage.png');
+    height: 100% !important;
+    width: 100% !important;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.maintext {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 56px;
+    margin-top: 5px;
+    letter-spacing: -1px;
+    font-family: 'Sofia Pro', sans-serif;
+    padding-left: .5rem;
+}
+
+.containerHM {
+    color: white;
+    margin-top: 10% !important;
+    margin-left: 15% !important;
+}
+
+.login {
+    width: 150px;
+    margin-top: 10px;
+    margin-bottom: 24px;
+    margin-right: 5px !important;
+    margin-left: 7px !important;
+    border-color: white !important;
+    border: 4px !important;
+    background-color: #4a4a4a;
+    color: #fff;
+    padding: 21px 0 21px 0;
+    text-align: center;
+    font-family: 'Sofia Pro', cursive;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -.3px;
+}
+
+.signup {
+    width: 150px;
+    margin-top: 10px;
+    margin-bottom: 24px;
+    border-color: #4a4a4a;
+    border: 15px;
+    background-color: white;
+    color: #4a4a4a;
+    margin-left: 8px !important;
+    padding: 20px 0 20px 0;
+    text-align: center;
+    font-family: 'Sofia Pro', cursive;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -.3px;
+}
+
+.logoimg {
+    height: 10% !important;
+    width: 10% !important;
+    margin-left: 7px !important;
+}

@@ -1,13 +1,12 @@
 import React from 'react'
 import styles from "./MovieItem.module.css";
 import { useAuth } from "../../contexts/Authcontext";
+
 export const MovieItem = (props) =>{
 
     const {currentUser} = useAuth();
-    //console.log(currentUser);
 
     const AddToPublic = async () =>{
-        console.log(currentUser.accessToken);
         const res = await fetch(`https://movielb.herokuapp.com/addToPublic/${currentUser.uid}`, {
             method: 'POST',
             headers: {
@@ -27,7 +26,6 @@ export const MovieItem = (props) =>{
     }
 
     const AddToPrivate = async () =>{
-        console.log(currentUser.accessToken);
         const res = await fetch(`https://movielb.herokuapp.com/addToPrivate/${currentUser.uid}`, {
             method: 'POST',
             headers: {
@@ -47,30 +45,30 @@ export const MovieItem = (props) =>{
     }
   return (
       <div className={styles.body}>
-          <div className={` ${styles.inner} ${styles.column}`}>
-              <div className={` ${styles.fcol} ${styles.column}`}>
+          <div className={` ${styles.inner} ${styles.col}`}>
+              <div className = {styles.row}>
                   <div className={styles.box1}>
-                      <div className={styles.date}><img src ={props.item.Poster}/></div>
+                      <img className = {styles.img}src ={props.item.Poster}/>
                   </div>
                   <div className={`${styles.box2} space-y-1`}>
-                      <h3>
+                      <h3 className={styles.txt}>
                           <span>
-                           Title: {props.item.Title}
+                           Title:{props.item.Title}
                           </span>
                       </h3>
-                      <h3>
+                      <h3  className={styles.txt}> 
                           <span>
                           Year: {props.item.Year}
                           </span>
                       </h3>
-                      <div>
+                      <div  className={styles.txt}>
                           <span>
                            imdbID: {props.item.imdbID}
                           </span>
                       </div>
                   </div>
               </div>
-              <div className={` ${styles.fcol} ${styles.column} space-x-4`}>
+              <div className={styles.last}>
                   <div className="flex space-x-1 items-center">
                           <button className={styles.button} onClick = {AddToPublic}>
                               +Add to playlist(public)

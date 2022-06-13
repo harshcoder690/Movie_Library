@@ -1,16 +1,21 @@
-import React,{useEffect,useState}from 'react';
+import React, { useEffect, useState } from 'react';
 import { useAuth } from "../../contexts/Authcontext";
 import { MovieItem } from '../Homepage/MovieItem';
+import { Navbar } from "../Navbar/Navbar";
+import { ReactComponent as Loading } from "../../assets/loading.svg";
+import { ListItem } from '../ListItem/ListItem';
 const Playlist = () => {
 
-    const {currentUser} = useAuth();
-    const [list,setList] = useState([]); 
+    const { currentUser } = useAuth();
+    const [list, setList] = useState([]);
 
-    useEffect(() =>{
-           getPrivate();
-    },[])
-    
-    const getPrivate = async() =>{
+    const [isloading, setloading] = useState(true);
+
+    useEffect(() => {
+        getPrivate();
+    }, [])
+
+    const getPrivate = async () => {
         const res = await fetch(`https://movielb.herokuapp.com/getPrivateList/${currentUser.uid}`, {
             method: 'GET',
             headers: {
@@ -22,13 +27,18 @@ const Playlist = () => {
         });
 
         const data = await res.json();
-        console.log(data)
         setList(data);
-    }
 
-    return (<div>
-        {list.length===0 ? "No list available" : list.map((item) => <MovieItem item = {item}/>)}
-    </div>);
+        setloading(false);
+    }
+    let v = 2;
+    return (
+        <div>
+            <Navbar/>
+            <div>
+                {isloading ? <Loading /> : list.length === 0 ? "No list available" : list.map((item) => <ListItem item={item} />)}
+            </div>
+        </div>);
 }
 
 export default Playlist;

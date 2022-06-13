@@ -13,11 +13,11 @@ export const Routing = () => {
     <Routes>
       <Route path="/login" element={<LoginBox />} />
       <Route path="/signup" element={<Signupbox />} />
-      <Route path="/search" element={<HomePage />} />
-      <Route path="/Home" element={<Main />} />
+      <Route path="/" element={<Main />} />
       <Route path="/PrivateList" element={<Playlist />} />
       <Route path="/PublicList" element={<PublicPlaylist />} />
-      <Route path="/" element={<Navbar />} />
+      <Route path="/Home" element={<Navbar />} />
+      <Route path="/search" element={<HomePage />} />
     </Routes>
   );
 };

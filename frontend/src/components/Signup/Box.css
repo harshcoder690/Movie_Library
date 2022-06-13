@@ -1,8 +1,15 @@
+@import url("http://fonts.cdnfonts.com/css/sofia-pro");
+.main_con {
+    background-image: url('../../assets/loginimage.png');
+    font-family: 'Sofia Pro', sans-serif;
+}
+
 .con1 {
     min-height: 100vh !important;
     display: flex !important;
     flex-direction: column !important;
     font-family: 'Sofia Pro', sans-serif !important;
+    padding-bottom: 5% !important;
 }
 
 .con2 {
@@ -41,7 +48,7 @@
 }
 
 .head-text {
-    color: rgb(0 0 0/var(--tw-text-opacity)) !important;
+    color: white;
     line-height: 1.5rem !important;
     font-weight: 800 !important;
     font-size: 1.5rem !important;
@@ -82,4 +89,11 @@
 
 .txt {
     padding-top: .5rem !important;
+}
+
+.head {
+    font-family: 'Sofia Pro', sans-serif !important;
+    color: white;
+    font-weight: 800 !important;
+    font-size: 1rem !important;
 }

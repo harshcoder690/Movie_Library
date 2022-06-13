@@ -1,34 +1,113 @@
-import React, { useState } from 'react';
-import { Link, Outlet } from 'react-router-dom';
-import styles from "./Navbar.css";
-import { HomePage } from '../Homepage/HomePage';
+import React, { useEffect,useState  } from 'react'
+import { NavLink,Link, Outlet  } from 'react-router-dom';
+import $ from 'jquery';
+import "./Navbar.css";
+import { HomePage } from "../Homepage/HomePage";
+import img from "../../assets/logo.png";
 
-export const Navbar = () => {
+export const Navbar = (props) => {
 
-    const [val, setVal] = useState(1);
+  const [val, setVal] = useState(2);
 
-    const valhandler = () => {
-        setVal(2);
-    }
+  const valhandler = () => {
+    setVal(2);
+  };
 
-    return (
-        <div className={styles.body}>
-            <nav className={styles.navbody}>
-                <ul>
-                    <li onClick={valhandler}>
-                        <Link to="/Home"><div className={styles.sidenavlink}>Home</div></Link>
-                    </li>
-                    <li onClick={valhandler}>
-                        <Link to="/PrivateList"><div className={styles.sidenavlink}>My Favourites</div></Link>
-                    </li>
-                    <li onClick={valhandler}>
-                        <Link to="/PublicList"><div className={styles.sidenavlink}>Public Favorites</div></Link>
-                    </li>
-                </ul>
-            </nav>
-            {val == 1 ? <HomePage /> : <Outlet />}
+  function animation() {
+    var tabsNewAnim = $('#navbarSupportedContent');
+    var activeItemNewAnim = tabsNewAnim.find('.active');
+    var activeWidthNewAnimHeight = activeItemNewAnim.innerHeight();
+    var activeWidthNewAnimWidth = activeItemNewAnim.innerWidth();
+    var itemPosNewAnimTop = activeItemNewAnim.position();
+    var itemPosNewAnimLeft = activeItemNewAnim.position();
+    $(".hori-selector").css({
+      "top": itemPosNewAnimTop.top + "px",
+      "left": itemPosNewAnimLeft.left + "px",
+      "height": activeWidthNewAnimHeight + "px",
+      "width": activeWidthNewAnimWidth + "px"
+    });
+    $("#navbarSupportedContent").on("click", "li", function (e) {
+      $('#navbarSupportedContent ul li').removeClass("active");
+      $(this).addClass('active');
+      var activeWidthNewAnimHeight = $(this).innerHeight();
+      var activeWidthNewAnimWidth = $(this).innerWidth();
+      var itemPosNewAnimTop = $(this).position();
+      var itemPosNewAnimLeft = $(this).position();
+      $(".hori-selector").css({
+        "top": itemPosNewAnimTop.top + "px",
+        "left": itemPosNewAnimLeft.left + "px",
+        "height": activeWidthNewAnimHeight + "px",
+        "width": activeWidthNewAnimWidth + "px"
+      });
+    });
+  }
 
+  useEffect(() => {
+
+    animation();
+    $(window).on('resize', function () {
+      setTimeout(function () { animation(); }, 500);
+    });
+
+  }, []);
+
+  return (
+    <div>
+      <nav className="navbar navbar-expand-lg navbar-mainbg">
+
+        <div className="navbar-brand navbar-logo" to="/" exact>
+          <img src={img} />
+          <h1>
+            Movielib
+          </h1>
         </div>
-    );
 
+
+        <button
+          className="navbar-toggler"
+          onClick={function () {
+            setTimeout(function () { animation(); });
+          }}
+          type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <i className="fas fa-bars text-white"></i>
+        </button>
+
+        <div
+          className="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul className="navbar-nav ml-auto">
+
+            <div className="hori-selector">
+              <div className="left"></div>
+              <div className="right"></div>
+            </div>
+
+            <li className="nav-item active"  onClick={valhandler}>
+              <Link className="nav-link" to="/search" exact>
+                <i
+                  className="fas fa-tachometer-alt">
+                </i>Home
+              </Link>
+            </li>
+
+            <li className="nav-item"  onClick={valhandler}>
+              <NavLink className="nav-link" to="/PrivateList" exact>
+                <i
+                  className="far fa-address-book">
+                </i>My Favourites
+              </NavLink>
+            </li>
+
+            <li className="nav-item"  onClick={valhandler}>
+              <NavLink className="nav-link" to="/PublicList" exact>
+                <i
+                  className="far fa-clone">
+                </i>Public Favorites
+              </NavLink>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      {val == 1 ? <HomePage /> : <Outlet />}
+    </div>
+  )
 }

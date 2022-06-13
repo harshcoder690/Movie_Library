@@ -21,7 +21,7 @@ export const LoginBox = () => {
       console.log(details.email,details.password)
       const res = await login(details.email,details.password);
       console.log(res);
-      navigate("/");
+      navigate("/Home");
     } catch(error) {
       console.log(error);
       setError("Failed to Signin");
@@ -30,15 +30,15 @@ export const LoginBox = () => {
   }
 
   return (
-    <div>
+    <div className="main_con">
       <div className="h-full py-16 px-4">
         <div className="bg-grey-lighter min-h-screen flex flex-col con1">
           <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2 con2">
-            <h3 className="text-2xl font-extrabold leading-6 my-5 text-black head-text">
-              Movie-Library
+            <h3 className="text-3xl font-extrabold leading-6 my-5 text-black head-text">
+            Movielib
             </h3>
             <div className="space-x-2">
-              <h1 className="mb-8 text-3xl text-center">Log in</h1>
+              <h1 className="mb-8 text-3xl text-center head">Log in</h1>
             </div>
             <div className="mt-2 sm:mx-auto sm:w-full sm:max-w-md con3">
               <div className="bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10 border-2 border-gray-300 con4">
