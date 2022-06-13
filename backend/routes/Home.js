@@ -110,19 +110,58 @@ router.get("/getPublicList", protect, async(req, res) => {
     })
     //done
 router.get("/getPrivateList/:userId", protect, async(req, res) => {
-    var uid = req.params.userId;
-    try {
-        let user = await User.findOne({ uid });
+        var uid = req.params.userId;
+        try {
+            let user = await User.findOne({ uid });
 
-        if (!user) {
-            res.status(400).send("No List Available")
-        } else {
-            res.status(200).send(user.playLists[0].movies);
+            if (!user) {
+                res.status(400).send("No List Available")
+            } else {
+                res.status(200).send(user.playLists[0].movies);
+            }
+        } catch (error) {
+            res.status(400).send(error);
         }
+    })
+    //done
+router.delete("/removeFromPrivate/:userId", protect, async(req, res) => {
+        var uid = req.params.userId;
+        const movie = req.body;
+        try {
+            let user = await User.findOne({ uid });
+            let playLists = user.playLists;
+            const movies = playLists[0].movies;
+            console.log(movies);
+            for (let i = 0; i < movies.length; i++) {
+                if (movies[i].Title === movie.Title) {
+                    movies.splice(i, 1);
+                    playLists[0].movies = movies;
+                }
+            }
+            await User.findOneAndUpdate({ uid }, { playLists: playLists });
+            res.status(200).send("done");
+        } catch (error) {
+            res.status(400).send(error);
+        }
+    })
+    //done
+router.delete("/removeFromPublic", protect, async(req, res) => {
+    const movie = req.body;
+    try {
+        let playList = await PublicPlaylist.findOne({ name: "public" });
+        const movies = playList.movies;
+        for (let i = 0; i < movies.length; i++) {
+            if (movies[i].Title === movie.Title) {
+                movies.splice(i, 1);
+            }
+        }
+        await PublicPlaylist.findOneAndUpdate({ name: "public" }, { movies: movies });
+        res.status(200).send("done");
     } catch (error) {
         res.status(400).send(error);
     }
 })
+
 
 
 module.exports = router;

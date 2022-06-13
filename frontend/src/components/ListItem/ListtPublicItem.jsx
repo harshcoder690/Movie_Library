@@ -1,36 +1,30 @@
 import React,{useContext} from "react";
 import styles from "./ListItem.module.css";
 import { useAuth } from "../../contexts/Authcontext";
-import { PrivateListContext } from "../../contexts/Authcontext";
-import { setdelete } from "../../actions/deletePrivateItem";
-import { ToastContainer, toast } from "react-toastify";
-export const ListItem = (props) => {
+import { PublicListContext } from "../../contexts/Authcontext";
+import { setdeletePublic } from "../../actions/deletePublicItem";
+export const ListPublicItem = (props) => {
 
-  const { currentUser } = useAuth();    
-  const { deleteItem, dispatchDelete } = useContext(PrivateListContext);
-
-  const removefromprivate = async () => {
-    const res = await fetch(
-      `http://localhost:5000/removeFromPrivate/${currentUser.uid}`,
-      {
-        method: "DELETE",
-        headers: {
-          Accept: "application/json, text/plain, */*",
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + currentUser.accessToken,
-        },
-        mode: "cors",
-        body: JSON.stringify({
-          Title: props.item.Title,
-          Year: props.item.Year,
-          imdbID: props.item.imdbID,
-          Type: props.item.Type,
-          Poster: props.item.Poster,
-        }),
-      }
-    );
-    dispatchDelete(setdelete());
-
+  const { currentUser } = useAuth();
+  const { deletePublicItem, dispatchPublicDelete } = useContext(PublicListContext);
+  const removefrompublic = async () => {
+    const res = await fetch(`http://localhost:5000/removeFromPublic`, {
+      method: "DELETE",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + currentUser.accessToken,
+      },
+      mode: "cors",
+      body: JSON.stringify({
+        Title: props.item.Title,
+        Year: props.item.Year,
+        imdbID: props.item.imdbID,
+        Type: props.item.Type,
+        Poster: props.item.Poster,
+      }),
+    });
+    dispatchPublicDelete(setdeletePublic());
   };
   return (
     <>
@@ -56,7 +50,7 @@ export const ListItem = (props) => {
             <div className="flex space-x-1 items-center">
               <button
                 className={styles.button}
-                onClick={removefromprivate}
+                onClick={removefrompublic}
               >
                 -Remove from the list
               </button>

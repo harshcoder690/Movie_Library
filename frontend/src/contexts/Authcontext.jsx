@@ -11,9 +11,18 @@ import {
 } from "firebase/auth";
 
 const AuthContext = React.createContext();
-
+export const PublicListContext = React.createContext();
+export const PrivateListContext = React.createContext();
 export function useAuth() {
   return useContext(AuthContext);
+}
+
+export function usePublicList() {
+  return useContext(PublicListContext);
+}
+
+export function usePrivateList() {
+  return useContext(PrivateListContext);
 }
 
 export function AuthProvider({ children }) {
