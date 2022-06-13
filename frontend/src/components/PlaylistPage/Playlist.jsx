@@ -11,7 +11,7 @@ const Playlist = () => {
     },[])
     
     const getPrivate = async() =>{
-        const res = await fetch(`http://localhost:5000/getPrivateList/${currentUser.uid}`, {
+        const res = await fetch(`https://movielb.herokuapp.com/getPrivateList/${currentUser.uid}`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json, text/plain, */*',

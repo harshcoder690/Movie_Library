@@ -8,7 +8,7 @@ export const MovieItem = (props) =>{
 
     const AddToPublic = async () =>{
         console.log(currentUser.accessToken);
-        const res = await fetch(`http://localhost:5000/addToPublic/${currentUser.uid}`, {
+        const res = await fetch(`https://movielb.herokuapp.com/addToPublic/${currentUser.uid}`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
@@ -28,7 +28,7 @@ export const MovieItem = (props) =>{
 
     const AddToPrivate = async () =>{
         console.log(currentUser.accessToken);
-        const res = await fetch(`http://localhost:5000/addToPrivate/${currentUser.uid}`, {
+        const res = await fetch(`https://movielb.herokuapp.com/addToPrivate/${currentUser.uid}`, {
             method: 'POST',
             headers: {
                 'Accept': 'application/json, text/plain, */*',

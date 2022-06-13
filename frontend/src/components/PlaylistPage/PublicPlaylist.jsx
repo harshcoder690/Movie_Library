@@ -11,7 +11,7 @@ const PublicPlaylist = () => {
     },[])
     
     const getPublic = async() =>{
-        const res = await fetch(`http://localhost:5000/getPublicList`, {
+        const res = await fetch(`https://movielb.herokuapp.com/getPublicList`, {
             method: 'GET',
             headers: {
                 'Accept': 'application/json, text/plain, */*',
