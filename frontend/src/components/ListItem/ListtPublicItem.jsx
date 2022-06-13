@@ -8,7 +8,7 @@ export const ListPublicItem = (props) => {
   const { currentUser } = useAuth();
   const { deletePublicItem, dispatchPublicDelete } = useContext(PublicListContext);
   const removefrompublic = async () => {
-    const res = await fetch(`http://localhost:5000/removeFromPublic`, {
+    const res = await fetch(`https://movielb.herokuapp.com/removeFromPublic`, {
       method: "DELETE",
       headers: {
         Accept: "application/json, text/plain, */*",

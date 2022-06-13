@@ -3,7 +3,6 @@ import styles from "./ListItem.module.css";
 import { useAuth } from "../../contexts/Authcontext";
 import { PrivateListContext } from "../../contexts/Authcontext";
 import { setdelete } from "../../actions/deletePrivateItem";
-import { ToastContainer, toast } from "react-toastify";
 export const ListItem = (props) => {
 
   const { currentUser } = useAuth();    
@@ -11,7 +10,7 @@ export const ListItem = (props) => {
 
   const removefromprivate = async () => {
     const res = await fetch(
-      `http://localhost:5000/removeFromPrivate/${currentUser.uid}`,
+      `https://movielb.herokuapp.com/removeFromPrivate/${currentUser.uid}`,
       {
         method: "DELETE",
         headers: {
