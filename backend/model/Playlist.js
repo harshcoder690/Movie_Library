@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const MovieSchema = require("../model/Movie").schema
+const MovieSchema = require("./Movie").schema
 const playListSchema = new mongoose.Schema({
     name: {
         type: String,

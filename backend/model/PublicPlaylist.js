@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const MovieSchema = require("../model/Movie").schema
+const MovieSchema = require("./Movie").schema;
 const PublicPlaylistschema = new mongoose.Schema({
     name: {
         type: String,
@@ -8,4 +8,4 @@ const PublicPlaylistschema = new mongoose.Schema({
 })
 
 const PublicPlaylist = mongoose.model('publicPlaylist', PublicPlaylistschema)
-module.exports = PublicPlaylist
+module.exports = PublicPlaylist;

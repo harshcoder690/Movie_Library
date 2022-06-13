@@ -1,6 +1,6 @@
 const express = require("express");
 const router = new express.Router();
-const { protect } = require('../Middleware/protect');
+const { protect } = require('../middleware/protect');
 const Playlist = require("../model/Playlist");
 const PublicPlaylist = require("../model/PublicPlaylist");
 const User = require("../model/user");
