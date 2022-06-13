@@ -8,6 +8,7 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
+@import url("http://fonts.cdnfonts.com/css/sofia-pro");
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
