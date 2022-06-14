@@ -29,8 +29,8 @@ export const HomePage = () => {
   };
   return (
     <div>
-      <Navbar />
-      <form>
+      {/* <Navbar /> */}
+      <div>
         <div className={styles.main1}>
           <div className={styles.main}>
             <TextField id="outlined-basic" InputProps={{
@@ -46,7 +46,7 @@ export const HomePage = () => {
             movies.map((item) => <MovieItem item={item} />)
           )}
         </div>
-      </form>
+      </div>
     </div>
   );
 };

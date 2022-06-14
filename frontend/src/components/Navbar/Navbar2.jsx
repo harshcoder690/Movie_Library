@@ -5,9 +5,9 @@ import "./Navbar.css";
 import { HomePage } from "../Homepage/HomePage";
 import img from "../../assets/logo.png";
 
-export const Navbar = (props) => {
+export const Navbar2 = (props) => {
 
-  const [val, setVal] = useState(2);
+  const [val, setVal] = useState(1);
 
   const valhandler = () => {
     setVal(2);
@@ -82,11 +82,11 @@ export const Navbar = (props) => {
             </div>
 
             <li className="nav-item active">
-              <Link className="nav-link" to="/Home" exact>
+              <NavLink className="nav-link" to="/Home" exact>
                 <i
                   className="fas fa-tachometer-alt">
                 </i>Home
-              </Link>
+              </NavLink>
             </li>
 
             <li className="nav-item"  onClick={valhandler}>

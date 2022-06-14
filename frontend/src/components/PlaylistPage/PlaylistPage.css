@@ -1,0 +1,10 @@
+.centre-text {
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 56px;
+    margin-top: 5px;
+    text-align: center;
+    letter-spacing: -1px;
+    font-family: 'Sofia Pro', sans-serif;
+    padding-left: .5rem;
+}

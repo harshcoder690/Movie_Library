@@ -29,7 +29,6 @@ export const ListItem = (props) => {
       }
     );
     dispatchDelete(setdelete());
-
   };
   return (
     <>

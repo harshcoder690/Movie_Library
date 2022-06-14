@@ -28,8 +28,7 @@ export const MovieItem = (props) => {
                     }),
                 }
             );
-            setLoading(false);
-            navigate("/PublicList")
+            alert("added sucsessfully")
         } catch (err) {
             alert("No Movie added");
         }
@@ -56,8 +55,7 @@ export const MovieItem = (props) => {
                     }),
                 }
             );
-            setLoading(false)
-            navigate("/PrivateList")
+            alert("added sucsessfully")
         }catch(err){
             alert("No Movie added")
         }
@@ -87,7 +85,6 @@ export const MovieItem = (props) => {
                             <button className={styles.button} onClick={AddToPublic}>
                                 +Add to playlist(public)
                             </button>
-                            :
                             <button className={styles.button} onClick={AddToPrivate}>
                                 +Add to playlist(Private)
                             </button>

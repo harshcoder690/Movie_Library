@@ -4,6 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import { ReactComponent as Loading } from "../../assets/loading.svg";
 import { ListItem } from "../ListItem/ListItem";
 import { PrivateListContext } from "../../contexts/Authcontext";
+import "./PlaylistPage.css";
 const Playlist = () => {
   const { deleteItem, dispatchDelete } = useContext(PrivateListContext);
   const { currentUser } = useAuth();
@@ -38,6 +39,9 @@ const Playlist = () => {
       <div>
         <Navbar />
         <div>
+        <div className="centre-text">
+            My Favorites
+        </div>
           {isloading ? (
             <Loading />
           ) : list.length === 0 ? (

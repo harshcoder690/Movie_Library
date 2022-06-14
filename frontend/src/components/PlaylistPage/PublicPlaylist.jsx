@@ -4,6 +4,7 @@ import { Navbar } from "../Navbar/Navbar";
 import { ReactComponent as Loading } from "../../assets/loading.svg";
 import { ListPublicItem } from "../ListItem/ListtPublicItem";
 import { PublicListContext } from "../../contexts/Authcontext";
+import "./PlaylistPage.css";
 export const PublicPlaylist = () => {
   const { deletePublicItem, dispatchPublicDelete } = useContext(PublicListContext);
   const { currentUser } = useAuth();
@@ -35,6 +36,9 @@ export const PublicPlaylist = () => {
       <div>
         <Navbar/>
         <div>
+        <div className="centre-text">
+            Public Favorites
+        </div>
           {isloading ? (
             <Loading />
           ) : list.length === 0 ? (
